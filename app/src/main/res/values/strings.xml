@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">opensourceAppsAndroid</string>
     <string name="action_settings">Settings</string>
+    <string name="content_description_owner_avatar">Owner avatar</string>
+    <string name="content_description_stars_count">Stars count</string>
+    <string name="content_description_forks_count">Forks count</string>
+    <string name="content_description_open_issues_count">Open issues count</string>
 </resources>
