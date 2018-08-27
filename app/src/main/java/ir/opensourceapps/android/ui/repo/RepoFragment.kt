@@ -1,12 +1,14 @@
 package ir.opensourceapps.android.ui.repo
 
 import android.os.Bundle
-import ir.opensourceapps.android.R
-import ir.opensourceapps.android.base.BaseFragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import ir.opensourceapps.android.base.Fragment
+import ir.opensourceapps.android.databinding.RepoFragmentBinding
 import ir.opensourceapps.android.model.Repo
-import timber.log.Timber
 
-class RepoFragment() : BaseFragment() {
+class RepoFragment() : Fragment() {
     companion object {
         private const val ARG_REPO = "repo"
 
@@ -23,14 +25,19 @@ class RepoFragment() : BaseFragment() {
 
     private var repo: Repo? = null
 
-    override val layoutResource: Int = R.layout.repo_fragment
 
     override fun customizeUI() {
-        Timber.d("====> ${repo?.description}")
+
     }
 
-    override fun gatherArguments(bundle: Bundle?) {
-        if (bundle != null && bundle.containsKey(ARG_REPO))
+    override fun inflateLayout(inflater: LayoutInflater, container: ViewGroup?): View {
+        val binding  = RepoFragmentBinding.inflate(inflater, container, false)
+        binding.repo = repo
+        return binding.root
+    }
+
+    override fun gatherArguments(bundle: Bundle) {
+        if (bundle.containsKey(ARG_REPO))
             repo = bundle.getParcelable(ARG_REPO)
     }
 }
