@@ -8,12 +8,12 @@ class RepoViewHolder(
         private val binding: ListItemRepoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Repo) {
+    fun bind(item: Repo, itemListener: RepoListener) {
         binding.run {
             repo = item
+            listener = itemListener
         }
     }
-
 }
 
 interface RepoListener {

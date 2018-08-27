@@ -11,7 +11,7 @@ class RepoAdapter(private val listener: RepoListener) :
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val repo = getItem(position)
-        holder.bind(repo)
+        holder.bind(repo, listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RepoViewHolder {
