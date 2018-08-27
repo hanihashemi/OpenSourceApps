@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+    <dimen name="fontSizeNormal">14dp</dimen>
+    <dimen name="fontSizeHint">12dp</dimen>
+    <dimen name="fontSizeTitle">18dp</dimen>
+</resources>
