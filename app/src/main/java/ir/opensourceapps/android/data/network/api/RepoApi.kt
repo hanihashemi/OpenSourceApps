@@ -19,7 +19,7 @@ interface RepoApi {
             @Query("order") order: String = "desc"
     ): Call<RepoSearchResult>
 
-    @GET("repos/:owner/:repo/readme")
+    @GET("repos/{owner}/{repo}/readme")
     fun readme(
             @Path("owner") owner: String,
             @Path("repo") repo: String
