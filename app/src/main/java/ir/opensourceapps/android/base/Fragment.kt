@@ -6,24 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-abstract class BaseFragment : Fragment() {
-    private var view: View? = null
-
-    protected abstract val layoutResource: Int
+abstract class Fragment : Fragment() {
+    private lateinit var view: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        view = inflater.inflate(layoutResource, container, false)
         if (arguments != null)
-            gatherArguments(arguments)
+            gatherArguments(arguments!!)
+
+        view = inflateLayout(inflater, container)
         customizeUI()
         return view
     }
 
-    override fun getView(): View? {
-        return view
-    }
+    override fun getView() = view
+
+    abstract fun inflateLayout(inflater: LayoutInflater, container: ViewGroup?): View
 
     protected abstract fun customizeUI()
 
-    open fun gatherArguments(bundle: Bundle?) {}
+    protected open fun gatherArguments(bundle: Bundle) {}
 }
