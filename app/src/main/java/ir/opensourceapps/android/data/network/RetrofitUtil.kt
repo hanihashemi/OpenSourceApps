@@ -28,8 +28,4 @@ class RetrofitUtil {
                     .build()
         }
     }
-
-    class ApiProvider(private val retrofit: Retrofit) {
-
-    }
 }
