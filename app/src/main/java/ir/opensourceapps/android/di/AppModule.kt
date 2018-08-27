@@ -2,8 +2,7 @@ package ir.opensourceapps.android.di
 
 import ir.opensourceapps.android.data.network.RetrofitUtil
 import ir.opensourceapps.android.data.network.api.ApiProvider
-import ir.opensourceapps.android.data.network.api.RepoApi
-import ir.opensourceapps.android.data.repository.RepoRepository
+import ir.opensourceapps.android.data.repository.RepoPagingRepository
 import ir.opensourceapps.android.ui.browse.BrowseViewModel
 import ir.opensourceapps.android.util.AppExecutors
 import org.koin.android.viewmodel.ext.koin.viewModel
@@ -24,5 +23,5 @@ val appModule: Module = module {
     single { ApiProvider(get()).repo() }
 
     //Repository
-    single<RepoRepository>()
+    single<RepoPagingRepository>()
 }

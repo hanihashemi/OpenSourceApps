@@ -9,8 +9,8 @@ import ir.opensourceapps.android.data.network.datasource.repo.RepoDataSourceFact
 import ir.opensourceapps.android.model.Repo
 import ir.opensourceapps.android.util.AppExecutors
 
-class RepoRepository(private val repoApi: RepoApi,
-                     private val appExecutors: AppExecutors) {
+class RepoPagingRepository(private val repoApi: RepoApi,
+                           private val appExecutors: AppExecutors) {
     @MainThread
     fun listOfNutritionist(pageSize: Int): Listing<Repo> {
         val sourceFactory = RepoDataSourceFactory(repoApi, appExecutors)

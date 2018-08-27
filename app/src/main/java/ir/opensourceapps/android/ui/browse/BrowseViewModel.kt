@@ -3,9 +3,9 @@ package ir.opensourceapps.android.ui.browse
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import ir.opensourceapps.android.data.repository.RepoRepository
+import ir.opensourceapps.android.data.repository.RepoPagingRepository
 
-class BrowseViewModel(private val repoRepository: RepoRepository) : ViewModel() {
+class BrowseViewModel(private val repoRepository: RepoPagingRepository) : ViewModel() {
 
     private val searchQuery = MutableLiveData<String>()
     private val repoResult = Transformations.map(searchQuery) {
