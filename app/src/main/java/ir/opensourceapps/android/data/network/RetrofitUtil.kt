@@ -1,7 +1,7 @@
 package ir.opensourceapps.android.data.network
 
 import ir.opensourceapps.android.BuildConfig
-import ir.opensourceapps.android.data.adapter.LiveDataCallAdapterFactory
+import ir.opensourceapps.android.data.network.adapter.LiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

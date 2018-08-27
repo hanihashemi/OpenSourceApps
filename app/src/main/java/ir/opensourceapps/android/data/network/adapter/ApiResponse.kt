@@ -1,4 +1,4 @@
-package ir.opensourceapps.android.data.adapter
+package ir.opensourceapps.android.data.network.adapter
 
 import retrofit2.Response
 

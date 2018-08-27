@@ -1,4 +1,4 @@
-package ir.opensourceapps.android.data.adapter
+package ir.opensourceapps.android.data.network.adapter
 
 import android.arch.lifecycle.LiveData
 import retrofit2.CallAdapter
