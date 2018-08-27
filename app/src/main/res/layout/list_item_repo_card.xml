@@ -38,6 +38,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:text="@{repo.fullName}"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imgAvatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgAvatar"
@@ -56,6 +57,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="@{repo.description}"
+            android:textSize="@dimen/fontSizeHint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +76,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblDescription"
-            app:srcCompat="@drawable/ic_star_24dp" />
+            app:srcCompat="@drawable/ic_star" />
 
         <TextView
             android:id="@+id/lblStar"
@@ -83,6 +85,8 @@
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
             android:text="@{String.valueOf(repo.stars)}"
+            android:textColor="@color/star"
+            android:textSize="@dimen/fontSizeHint"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2"
@@ -97,7 +101,7 @@
             android:contentDescription="@string/content_description_forks_count"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/lblStar"
-            app:srcCompat="@drawable/ic_fork_24dp" />
+            app:srcCompat="@drawable/ic_fork" />
 
         <TextView
             android:id="@+id/lblFork"
@@ -106,6 +110,8 @@
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
             android:text="@{String.valueOf(repo.forks)}"
+            android:textColor="@color/fork"
+            android:textSize="@dimen/fontSizeHint"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -120,7 +126,7 @@
             android:contentDescription="@string/content_description_open_issues_count"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/lblFork"
-            app:srcCompat="@drawable/ic_issue_24dp" />
+            app:srcCompat="@drawable/ic_issue" />
 
         <TextView
             android:id="@+id/lblIssue"
@@ -129,6 +135,8 @@
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
             android:text="@{String.valueOf(repo.openIssues)}"
+            android:textColor="@color/issue"
+            android:textSize="@dimen/fontSizeHint"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toTopOf="@+id/imageView4"

@@ -5,4 +5,9 @@
     <color name="colorAccent">#ffa433</color>
     <color name="textPrimary">#4a5161</color>
     <color name="windowPrimary">#f2f5fa</color>
+
+    <color name="star">#ffa634</color>
+    <color name="fork">#159af7</color>
+    <color name="issue">#ec1d65</color>
+
 </resources>
