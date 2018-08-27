@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="fontSizeNormal">14dp</dimen>
-    <dimen name="fontSizeHint">12dp</dimen>
-    <dimen name="fontSizeTitle">18dp</dimen>
+    <dimen name="fontSizeNormal">14sp</dimen>
+    <dimen name="fontSizeHint">12sp</dimen>
+    <dimen name="fontSizeTitle">18sp</dimen>
 </resources>
