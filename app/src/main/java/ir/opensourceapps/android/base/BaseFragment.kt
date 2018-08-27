@@ -25,5 +25,5 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun customizeUI()
 
-    private fun gatherArguments(bundle: Bundle?) {}
+    open fun gatherArguments(bundle: Bundle?) {}
 }

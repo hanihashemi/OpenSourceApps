@@ -32,7 +32,5 @@ class BrowseFragment() : BaseFragment(), RepoListener {
         vm.searchIt("")
     }
 
-    override fun onRepoClick(repo: Repo) {
-        RepoActivity.start(context!!)
-    }
+    override fun onRepoClick(repo: Repo) = RepoActivity.start(context!!, repo)
 }
