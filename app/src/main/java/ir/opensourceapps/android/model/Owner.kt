@@ -10,5 +10,6 @@ data class Owner(
         @field:SerializedName("avatar_url")
         val avatarUrl: String,
         val url: String,
-        val type: String
+        val type: String,
+        val login: String
 ) : Parcelable
