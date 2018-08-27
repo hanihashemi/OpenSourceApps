@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import ir.opensourceapps.android.databinding.ListItemRepoBinding
 import ir.opensourceapps.android.model.Repo
 
-class RepoAdapter() :
+class RepoAdapter(private val listener: RepoListener) :
         ListAdapter<Repo, RepoViewHolder>(RepoDiffCallback()) {
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {

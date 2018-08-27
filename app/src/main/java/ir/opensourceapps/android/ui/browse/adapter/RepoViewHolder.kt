@@ -1,7 +1,6 @@
 package ir.opensourceapps.android.ui.browse.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import ir.opensourceapps.android.databinding.ListItemRepoBinding
 import ir.opensourceapps.android.model.Repo
 
@@ -14,4 +13,9 @@ class RepoViewHolder(
             repo = item
         }
     }
+
+}
+
+interface RepoListener {
+    fun onRepoClick(repo: Repo)
 }
