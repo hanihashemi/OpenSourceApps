@@ -27,6 +27,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation ("com.github.bumptech.glide:glide:4.8.0") {
+        exclude group: "com.android.support"
+    }
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
