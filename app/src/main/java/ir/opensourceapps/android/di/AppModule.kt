@@ -1,6 +1,7 @@
 package ir.opensourceapps.android.di
 
 import ir.opensourceapps.android.data.network.RetrofitUtil
+import ir.opensourceapps.android.data.network.api.ApiProvider
 import ir.opensourceapps.android.data.network.api.RepoApi
 import ir.opensourceapps.android.data.repository.RepoRepository
 import ir.opensourceapps.android.ui.browse.BrowseViewModel
@@ -20,7 +21,7 @@ val appModule: Module = module {
     single { RetrofitUtil.create() }
 
     //API
-    single<RepoApi>()
+    single { ApiProvider(get()).repo() }
 
     //Repository
     single<RepoRepository>()
