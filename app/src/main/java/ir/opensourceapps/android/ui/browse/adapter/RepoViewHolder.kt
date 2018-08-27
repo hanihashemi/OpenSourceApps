@@ -9,9 +9,8 @@ class RepoViewHolder(
         private val binding: ListItemRepoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(listener: View.OnClickListener, item: Repo) {
+    fun bind(item: Repo) {
         binding.run {
-            clickListener = listener
             repo = item
         }
     }
