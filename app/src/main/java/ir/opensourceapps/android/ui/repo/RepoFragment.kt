@@ -2,10 +2,14 @@ package ir.opensourceapps.android.ui.repo
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import ir.opensourceapps.android.R
 import ir.opensourceapps.android.base.Fragment
 import ir.opensourceapps.android.data.repository.Resource
 import ir.opensourceapps.android.data.repository.Status
@@ -15,7 +19,6 @@ import ir.opensourceapps.android.model.Repo
 import kotlinx.android.synthetic.main.repo_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.noties.markwon.Markwon
-import timber.log.Timber
 
 class RepoFragment() : Fragment() {
     companion object {
@@ -37,18 +40,38 @@ class RepoFragment() : Fragment() {
 
 
     override fun customizeUI() {
+        observeResponse()
+        fetchRepo()
+    }
+
+    private fun observeResponse() {
         vm.readmeObserver.observe(this, Observer<Resource<Content>> {
             when (it?.status) {
                 Status.SUCCESS -> {
                     val bytesEncoded = Base64.decode(it.data?.content, Base64.DEFAULT)
-                    Markwon.setMarkdown(markdownView, String(bytesEncoded, Charsets.UTF_8));
+                    Markwon.setMarkdown(markdownView, String(bytesEncoded, Charsets.UTF_8))
+                    progressBar.visibility = GONE
                 }
-                Status.LOADING -> Timber.d("======> Loading")
+                Status.LOADING -> progressBar.visibility = VISIBLE
                 else -> {
-                    Timber.d("======> NO")
+                    progressBar.visibility = GONE
+                    showErrorMessage(it)
                 }
             }
         })
+    }
+
+    private fun showErrorMessage(it: Resource<Content>?) {
+        val snackBar = Snackbar.make(
+                scrollView,
+                it?.message.toString(),
+                Snackbar.LENGTH_INDEFINITE)
+        snackBar.setAction(R.string.action_retry) { _ ->
+            fetchRepo()
+        }.show()
+    }
+
+    private fun fetchRepo() {
         if (repo != null)
             vm.getReadme(repo!!)
     }
