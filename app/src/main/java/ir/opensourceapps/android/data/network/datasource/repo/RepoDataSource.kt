@@ -68,7 +68,8 @@ class RepoDataSource(
     override fun loadInitial(
             params: LoadInitialParams<Int>,
             callback: LoadInitialCallback<Int, Repo>) {
-        val request = repoApi.search("android+language:java+kotlin")
+        val request = repoApi.search(
+                query = "android+language:java+kotlin", perPage = params.requestedLoadSize)
         networkState.postValue(NetworkState.LOADING)
         initialLoad.postValue(NetworkState.LOADING)
 
@@ -80,7 +81,7 @@ class RepoDataSource(
             networkState.postValue(NetworkState.LOADED)
             initialLoad.postValue(NetworkState.LOADED)
             if (items != null && items.isNotEmpty())
-                callback.onResult(items, 0, 1)
+                callback.onResult(items, 1, 2)
         } catch (exception: IOException) {
             retry = {
                 loadInitial(params, callback)
