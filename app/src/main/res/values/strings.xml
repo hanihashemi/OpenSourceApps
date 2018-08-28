@@ -5,4 +5,6 @@
     <string name="content_description_stars_count">Stars count</string>
     <string name="content_description_forks_count">Forks count</string>
     <string name="content_description_open_issues_count">Open issues count</string>
+
+    <string name="action_retry">Retry</string>
 </resources>
