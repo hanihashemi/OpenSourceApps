@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import ir.opensourceapps.android.R
 import ir.opensourceapps.android.base.Fragment
 import ir.opensourceapps.android.data.network.datasource.NetworkState
-import ir.opensourceapps.android.data.network.datasource.Status
 import ir.opensourceapps.android.model.Repo
 import ir.opensourceapps.android.ui.browse.adapter.RepoAdapter
 import ir.opensourceapps.android.ui.browse.adapter.RepoListener
@@ -46,8 +45,8 @@ class BrowseFragment() : Fragment(), RepoListener {
         swipeRefresh.isRefreshing = true
 
         vm.refreshState.observe(this, Observer<NetworkState> {
-            if (it?.status == Status.FAILED || it?.status == Status.SUCCESS)
-                swipeRefresh.isRefreshing = false
+            swipeRefresh.isRefreshing =
+                    it == NetworkState.LOADING
         })
     }
 
