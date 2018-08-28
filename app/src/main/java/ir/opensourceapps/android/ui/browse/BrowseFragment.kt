@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import ir.opensourceapps.android.R
 import ir.opensourceapps.android.base.Fragment
+import ir.opensourceapps.android.data.network.datasource.NetworkState
+import ir.opensourceapps.android.data.network.datasource.Status
 import ir.opensourceapps.android.model.Repo
 import ir.opensourceapps.android.ui.browse.adapter.RepoAdapter
 import ir.opensourceapps.android.ui.browse.adapter.RepoListener
@@ -23,14 +25,35 @@ class BrowseFragment() : Fragment(), RepoListener {
     private val vm: BrowseViewModel by viewModel()
 
     override fun customizeUI() {
-        rclRepo.layoutManager = LinearLayoutManager(context!!)
-        rclRepo.adapter = RepoAdapter(this)
+        initSwipeRefresh()
+        initRecycler()
 
         vm.list.observe(this, Observer {
             (rclRepo.adapter as RepoAdapter).submitList(it)
         })
 
         vm.searchIt("")
+    }
+
+    private fun initSwipeRefresh() {
+        swipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light)
+
+        swipeRefresh.setOnRefreshListener { vm.refresh() }
+
+        swipeRefresh.isRefreshing = true
+
+        vm.refreshState.observe(this, Observer<NetworkState> {
+            if (it?.status == Status.FAILED || it?.status == Status.SUCCESS)
+                swipeRefresh.isRefreshing = false
+        })
+    }
+
+    private fun initRecycler() {
+        rclRepo.layoutManager = LinearLayoutManager(context!!)
+        rclRepo.adapter = RepoAdapter(this)
     }
 
     override fun inflateLayout(inflater: LayoutInflater, container: ViewGroup?) =
