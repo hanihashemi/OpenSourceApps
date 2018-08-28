@@ -1,16 +1,16 @@
 package ir.opensourceapps.android.ui.browse.adapter
 
-import android.support.v7.recyclerview.extensions.ListAdapter
+import android.arch.paging.PagedListAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ir.opensourceapps.android.databinding.ListItemRepoBinding
 import ir.opensourceapps.android.model.Repo
 
 class RepoAdapter(private val listener: RepoListener) :
-        ListAdapter<Repo, RepoViewHolder>(RepoDiffCallback()) {
+        PagedListAdapter<Repo, RepoViewHolder>(RepoDiffCallback()) {
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        val repo = getItem(position)
+        val repo = getItem(position) ?: return
         holder.bind(repo, listener)
     }
 
