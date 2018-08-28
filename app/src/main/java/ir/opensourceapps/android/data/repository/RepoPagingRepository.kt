@@ -18,7 +18,7 @@ class RepoPagingRepository(private val repoApi: RepoApi,
         val pagingConfig = PagedList.Config.Builder()
                 .setPageSize(pageSize)
                 .setPrefetchDistance(3)
-                .setEnablePlaceholders(true)
+                .setEnablePlaceholders(false)
                 .setInitialLoadSizeHint(10)
                 .build()
 
