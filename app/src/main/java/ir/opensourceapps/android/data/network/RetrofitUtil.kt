@@ -9,9 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitUtil {
     companion object {
-        private const val base_url = "https://api.github.com/"
 
-        fun create(): Retrofit {
+        fun create(
+                base_url: String = "https://api.github.com/"
+        ): Retrofit {
             val client = OkHttpClient().newBuilder()
 
             if (BuildConfig.DEBUG) {
