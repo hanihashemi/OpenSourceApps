@@ -2,6 +2,7 @@ package ir.opensourceapps.android.ui.repo
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,9 @@ import ir.opensourceapps.android.data.repository.Status
 import ir.opensourceapps.android.databinding.RepoFragmentBinding
 import ir.opensourceapps.android.model.Content
 import ir.opensourceapps.android.model.Repo
+import kotlinx.android.synthetic.main.repo_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import ru.noties.markwon.Markwon
 import timber.log.Timber
 
 class RepoFragment() : Fragment() {
@@ -37,7 +40,8 @@ class RepoFragment() : Fragment() {
         vm.readmeObserver.observe(this, Observer<Resource<Content>> {
             when (it?.status) {
                 Status.SUCCESS -> {
-                    Timber.d("======> YES")
+                    val bytesEncoded = Base64.decode(it.data?.content, Base64.DEFAULT)
+                    Markwon.setMarkdown(markdownView, String(bytesEncoded, Charsets.UTF_8));
                 }
                 Status.LOADING -> Timber.d("======> Loading")
                 else -> {
